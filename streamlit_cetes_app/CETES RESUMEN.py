@@ -25,6 +25,11 @@ SERIES = {
     "Tipo de Cambio FIX": "SF43718"
 }
 
+# ---------- RUTAS ABSOLUTAS ----------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+icon_path = os.path.join(BASE_DIR, "assets", "hucha.png")
+font_zip_path = os.path.join(BASE_DIR, "assets", "lato.zip")
+
 # ---------- STREAMLIT UI ----------
 st.set_page_config(layout="wide")
 st.title("📈 Análisis de CETES y Tipo de Cambio")
@@ -36,8 +41,8 @@ inicio = today - timedelta(days=365)
 fin = today
 
 # ---------- ARCHIVOS POR DEFECTO ----------
-img_file = open("assets/hucha.png", "rb")
-font_zip = open("assets/lato.zip", "rb")
+img_file = open(icon_path, "rb")
+font_zip = open(font_zip_path, "rb")
 
 # ---------- PROCESAR FUENTES Y ARCHIVOS ----------
 with zipfile.ZipFile(font_zip, 'r') as zip_ref:
@@ -165,8 +170,7 @@ st.markdown("""
 
 - **`resumen_cetes.png`**: Imagen con resumen de tasas CETES de 28 a 728 días y la tasa objetivo del Banxico, junto con su variación reciente.
 - **`graficas_cetes.png`**: Gráfica que muestra la evolución de los CETES y el tipo de cambio FIX a lo largo del último año.
-
-
 """)
+
 
 
